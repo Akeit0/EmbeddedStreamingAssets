@@ -30,6 +30,9 @@ https://github.com/Akeit0/EmbeddedStreamingAssets.git?path=Packages/EmbeddedStre
 ### Addressables
 ![image](Images/AddressableGroup.png)
 
+> [!IMPORTANT]
+> 手動ビルド忘れやすい！Addressableの変更後のビルド前に必ず行うこと！！
+
 Window/Asset Management/Addressables/GroupsからAddressables Groupsを開きます。
 Build/New Buildから手動でビルドします。
 
@@ -40,8 +43,9 @@ Build/New Buildから手動でビルドします。
 
 ### Save
 ![image](Images/ESAWindow.png)
-1. Window/EmbeddedStreamingAssets/BuildSettingsからWindowを開き、CreateEmbeddedAssetsを押して、保存先を指定します。
-2. Embed Assetsを押すと保存されます。
+
+1. `1回でOK`Window/EmbeddedStreamingAssets/BuildSettingsからWindowを開き、CreateEmbeddedAssetsを押して、保存先を指定します。
+2. Embed Assetsを押すとStreamingAssetsのデータが保存されます。(`Skip Auto Embedding On Build`を有効にしなければ自動実行されます。)
 
 以上の手順で
 ```csharp
