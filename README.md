@@ -28,16 +28,16 @@ https://github.com/Akeit0/EmbeddedStreamingAssets.git?path=Packages/EmbeddedStre
 > インストールするだけだとだと動きません
 
 ### Addressables
-![image](Images\AddressableGroup.png)
+![image](Images/AddressableGroup.png)
 Window/Asset Management/Addressables/GroupsからAddressables Groupsを開きます。
 Build/New Buildから手動でビルドします。
 
 
-![image](Images\PreferencesAddressable.png)
+![image](Images/PreferencesAddressable.png)
 手動でビルドするので、Preferencesから`Do Not Build Addressables on Player Build`推奨
 
 ### Save
-![image](Images\ESAWindow.png)
+![image](Images/ESAWindow.png)
 1. Window/EmbeddedStreamingAssets/BuildSettingsからWindowを開き、CreateEmbeddedAssetsを押して、保存先を指定します。
 2. Embed Assetsを押すと保存されます。
 
