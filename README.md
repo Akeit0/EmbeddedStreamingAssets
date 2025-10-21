@@ -29,11 +29,13 @@ https://github.com/Akeit0/EmbeddedStreamingAssets.git?path=Packages/EmbeddedStre
 
 ### Addressables
 ![image](Images/AddressableGroup.png)
+
 Window/Asset Management/Addressables/GroupsからAddressables Groupsを開きます。
 Build/New Buildから手動でビルドします。
 
 
 ![image](Images/PreferencesAddressable.png)
+
 手動でビルドするので、Preferencesから`Do Not Build Addressables on Player Build`推奨
 
 ### Save
