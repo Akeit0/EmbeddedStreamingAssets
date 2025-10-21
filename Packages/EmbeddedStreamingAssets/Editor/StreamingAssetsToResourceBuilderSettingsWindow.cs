@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -63,13 +65,36 @@ namespace EmbeddedStreamingAssets.Editor
             {
                 if (GUILayout.Button("Embed Assets"))
                 {
-                    BuildPreProcessor.Embed();
+                    Embed();
                 }
 
-                SkipEmbeddingOnBuild = EditorGUILayout.Toggle("Skip  Build On Build", SkipEmbeddingOnBuild);
+                SkipEmbeddingOnBuild = EditorGUILayout.Toggle("Skip Auto Embedding On Build", SkipEmbeddingOnBuild);
             }
         }
+        public static void Embed()
+        {
+            AssetDatabase.SaveAssets();
+            var streamingAssetsPath = Path.Combine(Application.dataPath, "StreamingAssets");
+            IEnumerable<string> files = Directory.GetFiles(streamingAssetsPath, "*", SearchOption.AllDirectories);
+            var addressablesPath = Path.Combine(Directory.GetParent(Application.dataPath)!.FullName, (AddressableBuildPath));
+            if (Directory.Exists(addressablesPath))
+            {
+                Debug.Log("Found Addressables Build at: " + addressablesPath);
+                var addressableFiles = Directory.GetFiles(addressablesPath, "*", SearchOption.AllDirectories);
+                files = files.Concat(addressableFiles);
+            }
 
+            files = files.Where(f => !f.EndsWith(".meta"));
+
+            EmbeddedAssets.RegisterAssets(files.Select(file =>
+            {
+                var rel = file.StartsWith(addressablesPath)
+                    ? "aa/" + file[(addressablesPath.Length + 1)..].Replace("\\", "/")
+                    : file[(streamingAssetsPath.Length + 1)..].Replace("\\", "/"); // e.g. "a/bundle.data"
+                return (file, rel);
+            }));
+            AssetDatabase.Refresh();
+        }
         void OnDisable()
         {
             var json = JsonUtility.ToJson(data);

@@ -85,12 +85,14 @@ namespace EmbeddedStreamingAssets
             LoadInstanceFromPreloadAssets();
         }
 
-        public void ClearAssets()
+        void ClearAssets()
         {
             entries = null;
         }
 
-        public void RegisterAssets(IEnumerable<(string path, string entry)> assets)
+        public static void RegisterAssets(IEnumerable<(string path, string entry)> assets) => Instance?.RegisterAssetsImpl(assets);
+
+        void RegisterAssetsImpl(IEnumerable<(string path, string entry)> assets)
         {
             ClearAssets();
             var tempEntries = ArrayPool<AssetEntry>.Shared.Rent(16);
@@ -171,8 +173,8 @@ namespace EmbeddedStreamingAssets
             Array.Sort(entriesMap, (a, b) => a.Hash.CompareTo(b.Hash));
         }
 
-
-        public bool TryGetAssetData(string key, out NativeArray<byte> result)
+        public static bool TryGetAssetData(string key, out NativeArray<byte> result) => Instance.TryGetAssetDataImpl(key, out result);
+        bool TryGetAssetDataImpl(string key, out NativeArray<byte> result)
         {
             result = default;
             if (entries == null || textAsset == null)

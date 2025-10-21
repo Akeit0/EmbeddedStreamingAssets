@@ -34,14 +34,7 @@ namespace EmbeddedStreamingAssets
             relPath = relPath.Replace("\\", "/");
             try
             {
-                var embeddedAssets = EmbeddedAssets.Instance;
-                if (embeddedAssets == null)
-                {
-                    EsaLib_Reject("Not found: " + relPath);
-                    return;
-                }
-
-                if (embeddedAssets.TryGetAssetData(relPath, out var data))
+                if (EmbeddedAssets.TryGetAssetData(relPath, out var data))
                 {
                     unsafe
                     {
