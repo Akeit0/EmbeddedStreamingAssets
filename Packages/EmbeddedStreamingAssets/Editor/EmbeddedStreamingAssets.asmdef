@@ -1,0 +1,19 @@
+{
+    "name": "EmbeddedStreamingAssets.Editor",
+    "rootNamespace": "EmbeddedStreamingAssets.Editor",
+    "references": [
+        "GUID:69448af7b92c7f342b298e06a37122aa",
+        "GUID:148f0e9f10ce48d40903cd810ac36113"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

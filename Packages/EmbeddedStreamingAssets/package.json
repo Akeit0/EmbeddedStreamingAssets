@@ -1,0 +1,9 @@
+{
+  "name": "com.akeit0.embedded-streaming-assets",
+  "version": "1.0.0",
+  "displayName": "EmbeddedStreamingAssets",
+  "description": "Embed StreamingAssets into the build.",
+  "author": {
+    "name": "Akeit0"
+  }
+}
