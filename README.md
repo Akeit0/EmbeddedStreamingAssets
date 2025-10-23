@@ -24,13 +24,12 @@ https://github.com/Akeit0/EmbeddedStreamingAssets.git?path=Packages/EmbeddedStre
 "com.akeit0.embedded-streaming-assets": "https://github.com/Akeit0/EmbeddedStreamingAssets.git?path=Packages/EmbeddedStreamingAssets"
 ```
 ## Usage
-> [!WARNING]
-> インストールするだけだとだと動きません
 
 ### Addressables
 ![image](Images/AddressableGroup.png)
 
 > [!IMPORTANT]
+> Player Build前の自動ビルドではAddressablesの変更が反映されないため、現状Addressablesの変更後は必ず手動でビルドが必要です！
 > 手動ビルド忘れやすい！Addressableの変更後のビルド前に必ず行うこと！！
 
 Window/Asset Management/Addressables/GroupsからAddressables Groupsを開きます。
