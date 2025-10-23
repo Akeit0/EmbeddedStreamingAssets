@@ -1,5 +1,4 @@
 #if UNITY_WEBGL && !UNITY_EDITOR
-
 using System;
 using System.Runtime.InteropServices;
 using UnityEngine;
@@ -34,13 +33,16 @@ namespace EmbeddedStreamingAssets
             relPath = relPath.Replace("\\", "/");
             try
             {
-                if (EmbeddedAssets.TryGetAssetData(relPath, out var data))
+                var asset = Resources.Load<TextAsset>("EmbeddedSA/"+relPath) ;
+                if (asset !=null)
                 {
+                    var data = asset.GetData<byte>(); 
                     unsafe
                     {
                         var ptr = (IntPtr)data.GetUnsafeReadOnlyPtr();
                         EsaLib_Resolve(ptr, data.Length);
                     }
+                    Resources.UnloadAsset(asset);
                 }
                 else
                 {

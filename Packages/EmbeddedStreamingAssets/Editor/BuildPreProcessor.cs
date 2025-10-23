@@ -12,8 +12,8 @@ namespace EmbeddedStreamingAssets.Editor
         {
             if (report.summary.platform == BuildTarget.WebGL)
             {
-                if (!StreamingAssetsToResourceBuilderSettingsWindow.SkipEmbeddingOnBuild)
-                    StreamingAssetsToResourceBuilderSettingsWindow.Embed();
+                if (!EmbeddedStreamingAssetsBuilderSettingsWindow.SkipEmbeddingOnBuild)
+                    EmbeddedStreamingAssetsBuilderSettingsWindow.Embed();
             }
         }
     }

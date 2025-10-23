@@ -1,11 +1,11 @@
 mergeInto(LibraryManager.library, {
     EsaLib_Init: function (fnPtr) {
-        const EsaLib =  {
+        const EsaLib = {
             result: ""
         };
-        
+
         Module.EsaLib = EsaLib;
-        
+
         const originalFetch = window.fetch;
         const origin = window.location.origin;
         const prefixAbs = origin + '/StreamingAssets/';
@@ -51,7 +51,9 @@ mergeInto(LibraryManager.library, {
     EsaLib_Resolve: function (dataPtr, length) {
         try {
             var src = new Uint8Array(Module.HEAPU8.buffer, dataPtr, length);
-            Module.EsaLib.result = src
+            var copy = new Uint8Array(length);
+            copy.set(src);
+            Module.EsaLib.result = copy
         } catch (e) {
             console.error('EsaLib_Resolve error', e);
         }
