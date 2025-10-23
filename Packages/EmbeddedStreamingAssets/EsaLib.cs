@@ -4,6 +4,9 @@ using System.Runtime.InteropServices;
 using UnityEngine;
 using AOT;
 using Unity.Collections.LowLevel.Unsafe;
+using UnityEngine.Scripting;
+
+[assembly: AlwaysLinkAssembly]
 
 namespace EmbeddedStreamingAssets
 {
@@ -33,15 +36,16 @@ namespace EmbeddedStreamingAssets
             relPath = relPath.Replace("\\", "/");
             try
             {
-                var asset = Resources.Load<TextAsset>("EmbeddedSA/"+relPath) ;
-                if (asset !=null)
+                var asset = Resources.Load<TextAsset>("EmbeddedSA/" + relPath);
+                if (asset != null)
                 {
-                    var data = asset.GetData<byte>(); 
+                    var data = asset.GetData<byte>();
                     unsafe
                     {
                         var ptr = (IntPtr)data.GetUnsafeReadOnlyPtr();
                         EsaLib_Resolve(ptr, data.Length);
                     }
+
                     Resources.UnloadAsset(asset);
                 }
                 else
@@ -56,5 +60,4 @@ namespace EmbeddedStreamingAssets
         }
     }
 }
-
 #endif
