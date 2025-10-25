@@ -7,10 +7,10 @@ unityroomなどWeb(GL) ビルドで StreamingAssets フォルダをアップロ�
 
 インスパイア元は[StreamingAssetsInjector](https://github.com/KurisuJuha/StreamingAssetsInjector)です。
 
-## Requirements
+# Requirements
 Unity 2022.3 or later
 
-## Installation
+# Installation
 
 PackageManger の Add package from git URL に以下を入力
 
@@ -23,29 +23,25 @@ https://github.com/Akeit0/EmbeddedStreamingAssets.git?path=Packages/EmbeddedStre
 ```
 "com.akeit0.embedded-streaming-assets": "https://github.com/Akeit0/EmbeddedStreamingAssets.git?path=Packages/EmbeddedStreamingAssets"
 ```
-## Usage
+# Usage
+![image](Images/BuildWindow.png)
 
-### Addressables
-![image](Images/AddressableGroup.png)
+`Tools/EmbeddedStreamingAssets`もしくは
+`Window/EmbeddedStreamingAssets/Build Window`から実行したい処理を実行します。
 
-> [!IMPORTANT]
-> Player Build前の自動ビルドではAddressablesの変更が反映されないため、現状Addressablesの変更後は必ず手動でビルドが必要です！
-> 手動ビルド忘れやすい！Addressableの変更後のビルド前に必ず行うこと！！
+## Embed Assets
+ビルド済みのAddressablesとStreamingAssetsを埋め込む。
+## Build Addressables with Embedding
+Addressablesのビルドと`Embed Assets`を行う。
+## Build Addressables and Player with Embedding
+`Build Addressables with Embedding`をしてからアプリのビルドを行う。
 
-Window/Asset Management/Addressables/GroupsからAddressables Groupsを開きます。
-Build/New Buildから手動でビルドします。
-
-
+---
 ![image](Images/PreferencesAddressable.png)
 
 手動でビルドするので、Preferencesから`Do Not Build Addressables on Player Build`推奨
 
-### Save
-![image](Images/ESAWindow.png)
-
-Window/EmbeddedStreamingAssets/BuildSettingsからWindowを開き、
-Embed Assetsを押すとStreamingAssetsのデータが保存されます。(`Skip Auto Embedding On Build`を有効にしなければ自動実行されます。)
-
+---
 以上の手順で
 ```csharp
 UnityWebRequest.Get("StreamingAssets/sample.txt");
